@@ -55,6 +55,9 @@ def set_attributes_for_print(instances):
         if 'addresses' not in instance_info:
             setattr(instance, 'addresses', '')
 
+        if 'operating_status' not in instance_info:
+            setattr(instance, 'operating_status', '')
+
     return instances
 
 
@@ -100,7 +103,8 @@ def set_attributes_for_print_detail(instance):
 class ListDatabaseInstances(command.Lister):
     _description = _("List database instances")
     columns = ['ID', 'Name', 'Datastore', 'Datastore Version', 'Status',
-               'Public', 'Addresses', 'Flavor ID', 'Size', 'Role']
+               'Operating Status', 'Public', 'Addresses', 'Flavor ID',
+               'Size', 'Role']
     admin_columns = columns + ["Tenant ID"]
 
     def get_parser(self, prog_name):
